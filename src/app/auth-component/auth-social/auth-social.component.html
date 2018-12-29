@@ -1,0 +1,32 @@
+<div class="login-wrap">
+    <div class="login-container">
+        <form class="login-html">
+            <label for="tab-2" class="tab pointer"
+            *ngIf="password != '' && email != ''">Your login details</label>
+            <label for="tab-2" class="tab pointer"
+            *ngIf="error != ''">Error registration</label>
+            <div class="login-form" style="min-height: inherit">
+                <div class="sign-up-htm" style="transform: none">
+                    <div *ngIf="email != ''" class="group" >
+                        <label for="username_register" class="label" >Email</label>
+                        <div>{{email}}</div>
+                    </div>
+                    <div *ngIf="password != ''" class="group" >
+                        <label for="username_register" class="label" >Password</label>
+                        <div>{{password}}</div>
+                    </div>
+                    <div *ngIf="error != ''" class="group" >
+                        <label for="username_register" class="label" >Message</label>
+                        <div>{{error}}</div>
+                    </div>
+                    <div class="group" style="display: flex;">
+                        <button mat-raised-button color="primary" style="margin: 0 2px">Back</button>
+                        <button mat-raised-button color="primary" style="margin: 0 2px" (click)="openDialog()"
+                        *ngIf="password != '' && email != ''">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

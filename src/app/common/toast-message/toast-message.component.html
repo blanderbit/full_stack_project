@@ -1,0 +1,14 @@
+<div class="wrapper" style="position: fixed;width: 100vw; z-index: 1">
+  <div  *ngFor="let message of messages;let i = index">
+    <div class="notification"
+
+         [ngClass]="{'is-info':     message.style=='info',
+                     'is-danger':   message.style=='danger',
+                     'is-success':  message.style=='success'}">
+
+      <button class="delete" (click)="removeMessage(i)"></button>
+      <div style="width: 100%">{{message.content}}</div>
+    </div>
+
+  </div>
+</div>

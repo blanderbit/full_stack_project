@@ -1,0 +1,96 @@
+<div class="login-wrap">
+    <div class="login-container">
+        <form class="login-html" [formGroup]="user">
+            <input id="tab-1"
+             type="radio" name="tab" class="sign-in "
+             routerLink='/login' [checked]="active['login']">
+            <label for="tab-1" class="tab pointer">Sign In</label>
+
+            <input id="tab-2" type="radio"
+             name="tab " class="sign-up "
+              routerLink='/register' [checked]="active['register']">
+            <label for="tab-2" class="tab pointer">Sign Up</label>
+
+            <div class="login-form">
+                <div class="sign-up-htm">
+
+
+                    <div class="group">
+                        <label for="username_register" class="label">Username</label>
+                        <input id="username_register" type="text" class="input"
+                        formControlName="nickname"
+                        [ngClass]="{inputInvalid:user.controls.nickname.errors}">
+                    </div>
+                    <div *ngIf="user && user.controls.nickname.errors" class="group blockError">
+                      <div *ngIf="user.controls.nickname.errors.required">Username is required</div>
+                    </div>
+
+
+                    <!--[ngClass]="{inputInvalid}"-->
+                    <div class="group blockError">
+                        <label for="pass_register" class="label">Password</label>
+                        <input id="pass_register" type="password" class="input" data-type="password"
+                         formControlName="password"
+                         [ngClass]="{inputInvalid:user.controls.password.errors}">
+                    </div>
+                    <div *ngIf="user && user.controls.password.errors" class="group blockError">
+                        <div *ngIf="user.controls.password.errors.required">Password is required</div>
+                        <div *ngIf="user.controls.password.errors.minLength != null ||
+                         user.controls.password.errors.minLength != undefined ? false : true">
+                            Password must be 8 cheraters
+                        </div>
+                    </div>
+
+
+                    <div class="group">
+                        <label for="pass_register1" class="label">Repeat Password</label>
+                        <input id="pass_register1" type="password" class="input" data-type="password"
+                        formControlName="confirm_password"
+                        [ngClass]="{inputInvalid:user.controls.confirm_password.errors
+                        || user.value.confirm_password != user.value.password}">
+                    </div>
+                    <div *ngIf="user.value.confirm_password != user.value.password" class="group blockError">
+                        <div>Confirm and password must be same</div>
+                    </div>
+                    <div *ngIf="user && user.controls.confirm_password.errors" class="group blockError">
+                        <div *ngIf="user.controls.confirm_password.errors.required">Confirm password is required</div>
+                    </div>
+
+
+
+
+                    <div class="group">
+                        <label for="email_register" class="label">Email Address</label>
+                        <input id="email_register" type="text" class="input"
+                        formControlName="email"
+                        [ngClass]="{inputInvalid:user.controls.email.errors || err_email}">
+                    </div>
+                    <div *ngIf="user && user.controls.email.errors" class="group blockError">
+                        <div *ngIf="user.controls.email.errors.required">Email is required</div>
+                        <div *ngIf="user.controls.email.errors.email">Email is Invalid</div>
+                    </div>
+                    <div *ngIf="err_email" class="group blockError">
+                        <div>The email has already been taken.</div>
+                    </div>
+
+
+                    <div class="group">
+                        <input type="submit" (click)="register()" class="button pointer" value="Sign Up">
+                    </div>
+                    <div class="group">
+                        <label class="tab">Register using social networks</label>
+                        <div class="social_network_container">
+                            <button mat-icon-button class="network" (click)="social('google')">
+                                <div class="google"></div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <label for="tab-1 pointer" routerLink='/register'>Already Member?</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
