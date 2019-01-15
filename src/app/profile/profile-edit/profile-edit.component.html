@@ -1,0 +1,121 @@
+
+<div class="col-lg-12 col-md-12 col-xs-12" style="margin-top: 80px">
+    <div class="panel">
+        <div class="tab-pane col-lg-6  fade show active in" id="contact">
+           <p></p>
+           <form role="form" style="display: flex; justify-content: space-between; flex-wrap: wrap">
+              <div>
+                   <label for="file" class="avatar_content">
+                        <div style="width: 100px; height: 100px" >
+                              <img [src]="profile.photo == null ? '../../../assets/no_avatar.jpg' : profile.photo"
+                              style="max-width: 100%; border-radius: 50%;">
+                        </div>
+                    </label>
+                   <input type="file" id="file" style="display: none" (change)="uploadFile($event)">
+                </div>
+               <mat-form-field class="example-full-width">
+                  <input [(ngModel)]="profile.nickname" [ngModelOptions]="{standalone: true}"
+                   matInput placeholder="Nickname" >
+              </mat-form-field>
+
+
+               <mat-form-field class="example-full-width">
+                   <input [(ngModel)]="profile.name" [ngModelOptions]="{standalone: true}"
+                   matInput placeholder="Name">
+               </mat-form-field>
+
+               <mat-form-field class="example-full-width">
+                  <input [(ngModel)]="profile.surname" [ngModelOptions]="{standalone: true}"
+                  matInput placeholder="Surname">
+               </mat-form-field>
+
+               <mat-form-field class="example-full-width">
+                  <input [(ngModel)]="profile.last_name" [ngModelOptions]="{standalone: true}"
+                  matInput placeholder="last name">
+               </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-select [(ngModel)]="profile.country"
+                     placeholder="Country"
+                    [ngModelOptions]="{standalone: true}">
+                      <mat-option *ngFor="let one of country" [value]="one.full_eng" (click)="pref = '+' + one.PhoneCode">
+                         {{one.full_eng}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                     <input [(ngModel)]="profile.city" [ngModelOptions]="{standalone: true}"
+                     matInput placeholder="City">
+                  </mat-form-field>
+
+               <mat-form-field class="example-full-width">
+                   <span matPrefix style="padding-right: 5px">{{pref}}</span>
+                   <input [(ngModel)]="profile.number" [ngModelOptions]="{standalone: true}"
+                   type="tel" matInput placeholder="Telephone">
+                   <mat-icon matSuffix>mode_edit</mat-icon>
+               </mat-form-field>
+
+               <mat-form-field class="example-full-width">
+                 <mat-select [(ngModel)]="profile.marital_status" [ngModelOptions]="{standalone: true}"
+                 placeholder="Marital status">
+                   <mat-option value="option1" *ngFor="let one_status of marital_status, index as i" [value]="i">
+                      {{one_status}}
+                   </mat-option>
+                 </mat-select>
+               </mat-form-field>
+
+               <mat-form-field class="example-full-width">
+                 <mat-select [(ngModel)]="profile.age" [ngModelOptions]="{standalone: true}"
+                 placeholder="Age">
+                   <mat-option value="option1" *ngFor="let age of age_arr, index as i" [value]="age">
+                      {{age}}
+                   </mat-option>
+                 </mat-select>
+               </mat-form-field>
+
+               <mat-form-field class="example-full-width">
+                 <mat-select [(ngModel)]="profile.gender"
+                  placeholder="Gender"
+                 [ngModelOptions]="{standalone: true}">
+                   <mat-option *ngFor="let one of gender, index as i" [value]="i">
+                      {{one}}
+                   </mat-option>
+                 </mat-select>
+               </mat-form-field>
+
+              <hr style="height: 1px; background: black; width: 100%">
+              <mat-form-field class="example-full-width">
+                    <input [(ngModel)]="password" [ngModelOptions]="{standalone: true}"
+                     matInput placeholder="Password" >
+                </mat-form-field>
+               <!--<mat-form-field class="example-full-width">
+                   <input matInput placeholder="Email" [formControl]="emailFormControl">
+                   <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                     Please enter a valid email address
+                   </mat-error>
+                   <mat-error *ngIf="emailFormControl.hasError('required')">
+                     Email is <strong>required</strong>
+                   </mat-error>
+               </mat-form-field>
+               <div class="form-group">
+                   <div class="checkbox">
+                   <label>
+                        <input type="checkbox"> Согласен с условиями
+                   </label>
+                   </div>
+               </div>
+               <div class="form-group">
+                   <label>Текст Вашего сообщения</label>
+                   <textarea class="form-control rounded" style="height: 100px;"></textarea>
+                   <p class="help-block">Текст сообщения будет отправлен пользователю</p>
+               </div>-->
+           </form>
+           <div class="form-group">
+                 <button mat-raised-button type="submit" (click)="saveEdit()"
+                 class="btn btn-success" data-original-title="" title="">Отправить</button>
+                 <button mat-raised-button [routerLink]='"/profile/"+id'
+                 color="primary" style="margin: 0 2px">Back</button>
+              </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+.mat-toolbar{
+  background: rgb(248, 249, 255);
+  color: rgba(0, 0, 0, 0.87);
+  box-shadow: 1px 1px 38px -8px black;
+  display: flex;
+  justify-content: space-between;
+}
+.nav_avatar_content{
+    margin: 0;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}

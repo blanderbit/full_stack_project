@@ -3,8 +3,9 @@ import {AuthLogin} from '../../_services/interface';
 import {FormBuilder, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../../_services/auth.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ToastService} from '../../_services/ToastService';
+import {IdentifikatorService, TokenService} from '../../_services/token.service';
 @Component({
     selector: 'app-auth-login',
     templateUrl: './auth-login.component.html',
@@ -25,7 +26,8 @@ export class AuthLoginComponent implements OnInit {
         private auth_service:     AuthService,
         private active_route:     ActivatedRoute,
         private fb:               FormBuilder,
-        private messsage_service: ToastService
+        private messsage_service: ToastService,
+        private router:           Router
     ) {
     }
     ngOnInit() {}
@@ -36,6 +38,9 @@ export class AuthLoginComponent implements OnInit {
                 .subscribe(
                     (next: AuthLogin) => {
                         this.messsage_service.AddMessage('you are logged in', 'success');
+                        TokenService.saveToken(next.token);
+                        IdentifikatorService.saveAuthId(next.user_id);
+                        this.router.navigate([`profile/${next.user_id}`]);
                     },
                     (err: any) => {
                         this.messsage_service.AddMessage(

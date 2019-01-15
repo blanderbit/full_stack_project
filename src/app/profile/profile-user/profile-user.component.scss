@@ -1,0 +1,42 @@
+body{
+  background: #f7f8fa;
+}
+
+.profile{
+  width: 100%;
+  padding: 20px;
+  background: white;
+  display: flex;
+  justify-content: center;
+}
+.avatar_content{
+  width: 120px;
+  height: 120px;
+  //border: 1px solid #498cd2;
+  //background: #dbe1e6;
+  border-radius: 50%;
+  box-shadow: 8px 12px 31px -13px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon{
+  font-size: 28px;
+  margin-right: 10px;
+  line-height: 30px;
+  width: 35px;
+  height: 25px;
+  text-align: center;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.edit_img{
+  background-image: url("../../../assets/profile/edit.svg");
+}
+.back_img{
+  background-image: url("../../../assets/profile/back-arrow.svg");
+}
+.title{
+  margin-right: 10px;
+}

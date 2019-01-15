@@ -39,12 +39,12 @@ export class AuthRegisterComponent implements OnInit {
         this.err_email = false;
         if (this.user.valid && this.user.value.confirm_password === this.user.value.password) {
             this.auth_service.signup(this.user.value)
-                .subscribe(
-                    (next: any) => this.messsage_service.AddMessage(next.message, 'success'),
-                    (err: any) => {
-                        this.messsage_service.AddMessage(err.error.errors.email[0], 'danger');
-                        this.err_email = true;
-                    });
+            .subscribe(
+                (next: any) => this.messsage_service.AddMessage(next.message, 'success'),
+                (err: any) => {
+                    this.messsage_service.AddMessage(err.error.errors.email[0], 'danger');
+                    this.err_email = true;
+                });
         }
     }
 

@@ -1,0 +1,43 @@
+<div style="margin-top: 64px; width: 100%;">
+    <div style="padding: 10px; width: 60%">
+        <mat-card class="example-card" *ngFor="let one of events,index as i" style="margin-bottom: 10px" >
+          <div class="image_container full_screen_img position-absolute"
+          style="right: 0; height: 15px; width: 15px; cursor: pointer" (click)="openOneEvent(one.id)"></div>
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image" style="background-size: cover"
+            [ngStyle]="{backgroundImage: 'url('+one.profile.photo+')'}"></div>
+            <mat-card-title >{{one.profile.name}}</mat-card-title>
+            <mat-card-subtitle>{{one.profile.last_name}}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image [src]="one.link" *ngIf="one.link != null" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+          <h3> {{one.event_name}}</h3>
+            <p>
+              {{one.about_event}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+
+            <button mat-icon-button [ngStyle]="{color:one.like_user_event != null ? 'red' : 'gray'}"
+            (click)="toggleLike(one.id, i)">
+                <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+              </button>{{one.likes_count}}
+            <button mat-button disabled>comment {{one.comment_count}}</button>
+          </mat-card-actions>
+          <mat-card-actions>
+            <div class="comment sH9wk  _JgwE ">
+                <div class="RxpZH">
+                    <form class="X7cDz" method="POST">
+                        <textarea [(ngModel)]="one.text_comment" [ngModelOptions]="{standalone: true}"
+                        placeholder="Добавьте комментарий..."
+                        class="Ypffh" autocomplete="off"
+                         style="height: 18px; padding-left: 0"
+                         (keyup.enter)="onEnter(one.id, one.text_comment)">
+                        </textarea>
+                    </form>
+                </div>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

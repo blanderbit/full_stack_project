@@ -4,7 +4,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiUrlInterceptor } from './_interseptor/url_interseptor';
 import { HttpTokenInterceptor } from './_interseptor/token_interseptor';
 import { ServerErrorsInterceptor } from './_interseptor/server_errors_interceptor';
-import { AppRoutingModule } from './app-routing.module';
+import {AppRoutingModule, RoutingComponents} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponentComponent } from './auth-component/auth-component.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -15,12 +15,20 @@ import {AuthModule} from './auth-component/auth.module';
 import {CommonComponents} from './common/common';
 import {ToastService} from './_services/ToastService';
 import {ToastMessageComponent} from './common/toast-message/toast-message.component';
+import {ProfileModule} from './profile/profile.module';
+import {MatModule} from './profile/mat.module';
+
+
+
 
 
 @NgModule({
   declarations: [
       AppComponent,
       ToastMessageComponent,
+      RoutingComponents,
+
+
     // AuthComponentComponent,
   ],
   imports: [
@@ -30,6 +38,8 @@ import {ToastMessageComponent} from './common/toast-message/toast-message.compon
       HttpClientModule,
       BrowserAnimationsModule,
       AuthModule,
+      ProfileModule,
+      MatModule
   ],
   providers: [
       ToastService,

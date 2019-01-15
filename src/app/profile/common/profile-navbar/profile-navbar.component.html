@@ -1,0 +1,26 @@
+<mat-toolbar style="    position: fixed;
+                        z-index: 7;
+                        width: calc(100vw - 200px);
+                        top: 0;
+">
+  <mat-toolbar-row style="display: flex;justify-content: space-between;">
+    <div style="display: flex; justify-content: flex-start">
+        <button mat-raised-button color="primary" style="margin: 0 2px;background: #156DB1" (click)="open_modal_event()" >Add Event</button>
+    </div>
+    <div style="display: flex; justify-content: flex-end">
+    <div style="    margin: 0 10px;
+                    font-size: 16px;
+                    align-self: center;
+                    color: #989898;">
+        <a style="color: #636363">en</a>
+           |
+        <a>ru</a>
+    </div>
+        <label for="file" class="nav_avatar_content">
+            <img [src]="profile.photo == null ? '../../../../assets/no_avatar.jpg' : profile.photo"
+            style="max-width: 100%; border-radius: 50%;">
+      </label>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+

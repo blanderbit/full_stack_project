@@ -37,8 +37,6 @@ export class AuthService {
     login(user: User): Observable<AuthLogin> {
         return this.http.post('/api/login', user).pipe(
             map((res: AuthLogin): AuthLogin => {
-                    // this.destroyAuth();
-                    // this.setAuth(res, res.token);
                     return res;
                 }
             )
@@ -47,18 +45,13 @@ export class AuthService {
 
     signup_social (name: string): void {
         const URL = environment.apiUrl + '/api/login/socialite/' + name;
-        // console.log(API_URL)
-        // debugger
-        // location.href()
-        // window.location.href;
-        // window.location.
-            document.location.href = URL;
+        document.location.href = URL;
     }
 
     //
-    // logout() {
-    //     this.destroyAuth();
-    // }
+    logout() {
+        TokenService.destroyToken()
+    }
     //
     // checkAuth(): Observable<boolean> {
     //     const token = TokenService.getToken();
@@ -81,16 +74,5 @@ export class AuthService {
     // }
     //
     //
-    // destroyAuth() {
-    //     TokenService.destroyToken();
-    //     this.userService.updateCurrentUserData();
-    //     this.isAuthenticated = false;
-    // }
-    //
-    // private setAuth(accountData: AccountData, token: string) {
-    //     TokenService.saveToken(token);
-    //     this.userService.updateCurrentUserData(accountData.user);
-    //     this.isAuthenticated = false;
-    // }
 }
 

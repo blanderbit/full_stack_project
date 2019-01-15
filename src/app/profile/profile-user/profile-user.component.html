@@ -1,0 +1,92 @@
+<div style="width: calc(100vw - 200px)!important;    padding: 64px 0 0 0;
+                                                     height: 100vh;">
+    <div id="main" style="    display: flex;
+                              flex-wrap: wrap;
+                              justify-content: center;">
+        <div class="profile">
+            <div class="icon back_img" style="position: absolute;left: 10px;"></div>
+            <div class="icon edit_img" style="position: absolute;right: 2px;" [routerLink]="'/profile/'+profile.id+'/edit'"></div>
+            <div style="padding: 20px; width: 300px;flex-direction: column;
+                                                        display: flex;
+                                                        align-items: center;">
+                <label for="file" class="avatar_content" style="align-self: center">
+                      <img [src]="profile.photo == null ? '../../../assets/no_avatar.jpg' : profile.photo"
+                      style="max-width: 100%; border-radius: 50%;">
+                </label>
+                <h4>
+                     {{profile.name}}  {{profile.last_name}}
+                </h4>
+                <div>
+                     {{profile.description}}
+                </div>
+                <div style="display: flex">
+                     <div style="padding: 10px">
+                        <div style="color:#176cb1;text-align: center">{{profile.likes}} 12</div>
+                        <div>Likes</div>
+                     </div>
+                     <div style="padding: 10px">
+                        <div style="color:#176cb1; text-align: center">{{profile.rate}} 12</div>
+                        <div>Rate</div>
+                     </div>
+                     <div style="padding: 10px">
+                        <div style="color:#176cb1; text-align: center">{{profile.friends}} 12</div>
+                        <div>Friends</div>
+                     </div>
+                </div>
+            </div>
+            <div style="padding: 20px; width: 300px">
+                <h3 style="padding: 5px">About you</h3>
+                <div class="d-flex" style="padding: 5px">
+                    <div class="title">Surname: </div>
+                    <div>{{profile.surname}}</div>
+                </div>
+                 <div class="d-flex" style="padding: 5px">
+                    <div class="title">Country: </div>
+                    <div>{{profile.country}}</div>
+                </div>
+                <div class="d-flex" style="padding: 5px">
+                    <div class="title">Gender: </div>
+                    <div>{{profile.gender}}</div>
+                </div>
+                 <div class="d-flex" style="padding: 5px">
+                    <div class="title">Age: </div>
+                    <div>{{profile.age}}</div>
+                </div>
+                <div class="d-flex" style="padding: 5px">
+                    <div class="title">Marital status: </div>
+                    <div>{{profile.marital_status}}</div>
+                </div>
+            </div>
+        </div>
+        <div style="display: flex; margin: 30px 0; flex-wrap: wrap">
+            <div>
+                 <h6 style="text-align: center">Active events</h6>
+                 <div style="width: 200px; margin: 10px; height: 200px; box-shadow: 7px 8px 37px -7px black;
+                 display: flex; flex-wrap: wrap">
+                    <div style="width: 45%; margin:5px;height: 45%;background-size: cover; background-repeat: no-repeat"
+                     *ngFor="let one of [1,2,3,4]" [ngStyle]="{backgroundImage: 'url('+profile.photo+')'}"></div>
+                 </div>
+            </div>
+
+            <div>
+                 <h6 style="text-align: center">Your Events</h6>
+                 <div style="width: 200px; margin: 10px; height: 200px; box-shadow: 7px 8px 37px -7px black;
+                  display: flex; flex-wrap: wrap">
+                     <div style="width: 45%; margin:5px;height: 45%;background-size: cover; background-repeat: no-repeat"
+                      *ngFor="let one of [1,2,3,4]" [ngStyle]="{backgroundImage: 'url('+profile.photo+')'}"></div>
+                  </div>
+            </div>
+            <div>
+                 <h6 style="text-align: center">Albums</h6>
+                 <div style="width: 200px; margin: 10px; height: 200px; box-shadow: 7px 8px 37px -7px black;
+               display: flex; flex-wrap: wrap">
+                      <div style="width: 45%; margin:5px;height: 45%;background-size: cover; background-repeat: no-repeat"
+                       *ngFor="let one of [1,2,3,4]" [ngStyle]="{backgroundImage: 'url('+profile.photo+')'}"></div>
+                   </div>
+            </div>
+        </div>
+        <div class="profile">
+            //
+         </div>
+    </div>
+</div>

@@ -20,8 +20,10 @@
                         <div>{{error}}</div>
                     </div>
                     <div class="group" style="display: flex;">
-                        <button mat-raised-button color="primary" style="margin: 0 2px">Back</button>
-                        <button mat-raised-button color="primary" style="margin: 0 2px" (click)="openDialog()"
+                        <button mat-raised-button color="primary" style="margin: 0 2px"
+                        routerLink="/login" >Back</button>
+                        <button mat-raised-button color="primary" style="margin: 0 2px"
+                        (click)="openDialog(user_id)"
                         *ngIf="password != '' && email != ''">Continue</button>
                     </div>
                 </div>

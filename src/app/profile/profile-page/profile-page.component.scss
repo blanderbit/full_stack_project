@@ -1,0 +1,105 @@
+.example-container{
+  height: 100vh;
+  position: relative;
+}
+.side_nav{
+  height: 64px;
+  margin: 0;
+  padding: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
+}
+.sidebar_container{
+  padding: 10px;
+  height: calc(100vh - 64px);
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.example-sidenav{
+  width: 200px;
+  color: white;
+  background: #145688;
+}
+.nav{display: block;
+  width: 100%;
+}
+.nav li{
+
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 10px;
+}
+.nav li a{
+  position: relative;
+  display: flex;
+  color: #FFFFFF;
+  border-radius: 4px;
+}
+.nav li a div{
+  opacity: 0.5;
+}
+.nav li a i{
+  opacity: 0.8;
+}
+
+.nav li a i, .image_container{
+  font-size: 28px;
+  margin-right: 10px;
+  line-height: 30px;
+  height: 25px;
+  width: 25px;
+  text-align: center;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.nav_down{
+  align-self: flex-end;
+  bottom: 0;
+}
+
+.full_screen_img{
+  background-image: url("../../../assets/profile/full_screen.svg");
+}
+.profile_img{
+  background-image: url("../../../assets/profile/profile.svg");
+}
+.settings_img{
+  background-image: url("../../../assets/profile/settings.svg");
+}
+.logout_img{
+  background-image: url("../../../assets/profile/logout.svg");
+}
+.help_img{
+  background-image: url("../../../assets/profile/help.svg");
+}
+.home_img{
+  background-image: url("../../../assets/profile/home.svg");
+}
+.like_img{
+  background-image: url("../../../assets/profile/like.svg");
+}
+.message_img{
+  background-image: url("../../../assets/profile/message.svg");
+}.event_img{
+  background-image: url("../../../assets/profile/event.svg");
+}
+
+.nav li:hover{
+  opacity: 1;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.23);
+}
+.nav li:hover a div{
+  opacity: 1;
+}
+.nav li:hover a i{
+  opacity: 1;
+
+}
+
+.title{
+  margin-right: 10px;
+}

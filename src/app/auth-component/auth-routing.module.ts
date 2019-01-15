@@ -14,7 +14,7 @@ export const RoutingComponents = [
 const routes: Routes = [
     {path: 'login', component: AuthLoginComponent},
     {path: 'register', component: AuthRegisterComponent},
-    {path: 'socialize/:status/:token/:password/:email/:type', component: AuthSocialComponent},
+    {path: 'socialize/:status/:token/:password/:email/:id/:type', component: AuthSocialComponent},
     {path: 'socialize/:status/:message_error', component: AuthSocialComponent}
 ];
 

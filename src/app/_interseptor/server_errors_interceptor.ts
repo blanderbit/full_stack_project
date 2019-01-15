@@ -19,8 +19,8 @@ export class ServerErrorsInterceptor implements HttpInterceptor {
 
     public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // this.authService = this.injector.get(AuthService);
-
-        return next.handle(request).pipe(
+        return next.handle(request)
+            .pipe(
             catchError((err: HttpErrorResponse) => {
                 return this.handleError(err);
             }));
@@ -36,7 +36,7 @@ export class ServerErrorsInterceptor implements HttpInterceptor {
         //   422: 'Unprocessable Entity',
         switch (err.status) {
             case 401:
-                this._handleUnauthorized();
+                // this._handleUnauthorized();
                 return throwError(err);
             default:
                 return throwError(err);

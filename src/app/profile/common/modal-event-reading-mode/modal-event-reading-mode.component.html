@@ -1,0 +1,102 @@
+<div class="md-main" [ngClass]="{'md-show' : active_event_read_mode_modal}" >
+    <div class="md-modal md-effect-1"
+     [ngClass]="{'md-show' : active_event_read_mode_modal}"
+        id="modal-1" >
+        <mat-tab-group  style="color: grey;"
+         (selectedIndexChange)="selectedIndexChange($event)"
+         (click)="tabClick($event)"
+        [ngStyle]="{display : active_event_read_mode_modal ? 'block' : 'none'}"
+        [selectedIndex]="selected">
+              <mat-tab label="Event">
+                <div style="min-height: 400px;max-height: 800px;height: 100%;">
+                    <div style="height: 100%; position:relative;">
+                        <mat-card class="example-card" style="box-shadow: none"
+                            *ngIf="data.event != null">
+                              <mat-card-header>
+                                    <div mat-card-avatar class="example-header-image" style="background-size: cover"
+                                    [ngStyle]="{backgroundImage: 'url('+data.event.profile.photo+')'}"></div>
+                                    <mat-card-title >{{data.event.profile.name}}</mat-card-title>
+                                    <mat-card-subtitle>{{data.event.profile.last_name}}</mat-card-subtitle>
+                              </mat-card-header>
+                              <img mat-card-image [src]="data.event.link"
+                              *ngIf="data.event.link != null" alt="Photo of a Shiba Inu">
+                              <mat-card-content>
+                                    <h3> {{data.event.event_name}}</h3>
+                                    <p>
+                                      {{data.event.about_event}}
+                                    </p>
+                              </mat-card-content>
+                              <mat-card-actions>
+
+                                    <button mat-icon-button [ngStyle]="{color:data.event.like_user_event != null ? 'red' : 'gray'}"
+                                    (click)="toggleLike(data.event.id)">
+                                        <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+                                    </button>{{data.event.likes_count}}
+                                    <button mat-button disabled>comment {{data.event.comment_count}}</button>
+                              </mat-card-actions>
+                        </mat-card>
+                        <div class="comment sH9wk  _JgwE " *ngIf="data.event != null"
+                        style="position: absolute; bottom: 0; width:100%; padding: 10px;">
+                            <div class="RxpZH">
+                                <form class="X7cDz" method="POST">
+                                    <textarea [(ngModel)]="data.event.text_comment"
+                                     [ngModelOptions]="{standalone: true}"
+                                     placeholder="Добавьте комментарий..."
+                                     class="Ypffh" autocomplete="off"
+                                     style="height: 18px; padding-left: 0"
+                                     (keyup.enter)="onEnter(data.event.id, data.event.text_comment)">
+                                    </textarea>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                </mat-tab>
+                <mat-tab label="Likes">
+                     <ul class="collection" style="min-height: 400px;">
+                         <li class="collection-item avatar" *ngFor="let like of data.likes" style="position: relative;">
+                             <img [src]="like.profile.photo == null?
+                              '../../../../assets/no_avatar.jpg' :
+                               like.profile.photo" class="circle" style="margin-top: 5px;">
+                             <div>{{like.profile.nickname}}</div>
+                             <span class="title">{{like.profile.name}}</span>
+                             <span class="title">{{like.profile.surname}}</span>
+                             <button mat-raised-button color="accent" style="position: absolute;right: 10px;top: 17px;">
+                             Add</button>
+                        </li>
+                     </ul>
+                </mat-tab>
+                <mat-tab label="Comment">
+                <div style="min-height: 400px;">
+                    <ul class="collection" style="min-height: 400px;">
+                          <li class="collection-item avatar" *ngFor="let comment of data.comments" style="position: relative;">
+                              <img [src]="comment.profile.photo == null?
+                               '../../../../assets/no_avatar.jpg' :
+                                comment.profile.photo" class="circle" style="margin-top: 5px;">
+                              <div style="word-break: break-all;">
+                                   <span style="color: #2e79ff">
+                                        {{comment.profile.nickname}}
+                                   </span>
+                                   <span class="title" style="color: black">
+                                        {{comment.text_comment}}
+                                   </span>
+                              </div>
+                              <ul style="padding: 0">
+                                    <span class="title">
+                                          edit
+                                    </span>
+                                    <span class="title">
+                                          remove
+                                    </span>
+                              </ul>
+                              <span class="title" style="color: black">
+                                  {{time_ago(comment.created_at)}}
+                             </span>
+                         </li>
+                    </ul>
+                </div>
+                </mat-tab>
+        </mat-tab-group>
+    </div>
+    <div class="md-overlay" (click)="modal_close()"></div>
+</div>
