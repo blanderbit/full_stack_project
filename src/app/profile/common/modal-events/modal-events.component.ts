@@ -55,13 +55,10 @@ export class ModalEventsComponent implements OnInit, DoCheck {
     addEvent() {
         this.event_service.addEvent(this.data)
             .subscribe( (next: any) => {
+                console.log(next);
                 this.modal_close();
-                this.data.about_event = null;
-                this.data.location = null;
-                this.data.event_name = null;
-                this.data.deadline = null;
-                this.data.link = null;
-                this.event_service.getEvents();
+                Object.keys(this.data).forEach(item => this.data[item] = null);
+                this.store.dispatch(new GetEvents(next.event));
             },
             (err: any) => console.log(err));
     }

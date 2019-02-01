@@ -5,12 +5,14 @@ import {ProfileUserComponent} from './profile-user/profile-user.component';
 import {ProfileEditComponent} from './profile-edit/profile-edit.component';
 import {ProfileResolver} from './profile.resolver';
 import {EventsPageComponent} from './events-page/events-page.component';
+import {ChatComponentsComponent} from './chat-components/chat-components.component';
 
 export const RoutingComponents = [
     ProfilePageComponent,
     ProfileUserComponent,
     ProfileEditComponent,
-    EventsPageComponent
+    EventsPageComponent,
+    ChatComponentsComponent
 ];
 
 const routes: Routes = [
@@ -24,6 +26,7 @@ const routes: Routes = [
             {path: ':id/edit', component: ProfileEditComponent},
         ]
     },
+    {path: 'chat', component: ChatComponentsComponent},
 ];
 
 @NgModule({

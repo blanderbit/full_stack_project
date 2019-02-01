@@ -1,5 +1,5 @@
 <div style="margin-top: 64px; width: 100%;">
-    <div style="padding: 10px; width: 60%">
+    <div style="padding: 10px; width: 100%">
         <mat-card class="example-card" *ngFor="let one of events,index as i" style="margin-bottom: 10px" >
           <div class="image_container full_screen_img position-absolute"
           style="right: 0; height: 15px; width: 15px; cursor: pointer" (click)="openOneEvent(one.id)"></div>
@@ -32,12 +32,17 @@
                         placeholder="Добавьте комментарий..."
                         class="Ypffh" autocomplete="off"
                          style="height: 18px; padding-left: 0"
-                         (keyup.enter)="onEnter(one.id, one.text_comment)">
+                         (keyup.enter)="onEnter(one.id, one.text_comment, one)">
                         </textarea>
                     </form>
                 </div>
             </div>
           </mat-card-actions>
         </mat-card>
+        <div style="width: 100%; display: flex; justify-content: center" *ngIf="paginate.total >= 15">
+             <a class="lazy_load" *ngIf="paginate.last_page !== paginate.current_page" (click)="lazyLoad()">
+                More...
+            </a>
+        </div>
     </div>
 </div>

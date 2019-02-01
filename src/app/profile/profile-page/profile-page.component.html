@@ -4,7 +4,7 @@
     <div class="sidebar_container">
         <ul class="nav">
             <li *ngFor="let one of sidebar">
-                <a [routerLink]="one.path">
+                <a [routerLink]="one.path == 'profile' ?  '/profile/'+ profile.id : one.path">
                     <i [ngClass]="one.img"></i>
                     <div>{{one.name}}</div>
                 </a>

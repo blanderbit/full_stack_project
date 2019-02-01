@@ -37,6 +37,7 @@ export class ServerErrorsInterceptor implements HttpInterceptor {
         switch (err.status) {
             case 401:
                 // this._handleUnauthorized();
+                this.router.navigateByUrl('login');
                 return throwError(err);
             default:
                 return throwError(err);

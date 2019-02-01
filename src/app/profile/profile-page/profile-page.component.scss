@@ -20,6 +20,7 @@
   width: 200px;
   color: white;
   background: #145688;
+  transition: 1s all;
 }
 .nav{display: block;
   width: 100%;
@@ -102,4 +103,12 @@
 
 .title{
   margin-right: 10px;
+}
+
+.close_sidebar{
+  left: -100%
+}
+
+.example-sidenav-content{
+  //width: ;
 }

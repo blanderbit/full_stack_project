@@ -27,8 +27,6 @@ import {MatModule} from './profile/mat.module';
       AppComponent,
       ToastMessageComponent,
       RoutingComponents,
-
-
     // AuthComponentComponent,
   ],
   imports: [

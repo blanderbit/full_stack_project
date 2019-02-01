@@ -1,14 +1,12 @@
 <div class="md-main" [ngClass]="{'md-show' : active_event_read_mode_modal}" >
     <div class="md-modal md-effect-1"
-     [ngClass]="{'md-show' : active_event_read_mode_modal}"
-        id="modal-1" >
-        <mat-tab-group  style="color: grey;"
-         (selectedIndexChange)="selectedIndexChange($event)"
-         (click)="tabClick($event)"
-        [ngStyle]="{display : active_event_read_mode_modal ? 'block' : 'none'}"
-        [selectedIndex]="selected">
+     [ngClass]="{'md-show' : active_event_read_mode_modal}" id="modal-1" >
+        <mat-tab-group  style="color: grey;min-height: 400px;height: 100%;max-height: 800px;overflow-y: scroll"
+         (selectedIndexChange)="selectedIndexChange($event)"(click)="tabClick($event)"
+         [ngStyle]="{display : active_event_read_mode_modal ? 'block' : 'none'}"
+         [selectedIndex]="selected">
               <mat-tab label="Event">
-                <div style="min-height: 400px;max-height: 800px;height: 100%;">
+                <div style="min-height: 400px;height: 100%;max-height: 800px;">
                     <div style="height: 100%; position:relative;">
                         <mat-card class="example-card" style="box-shadow: none"
                             *ngIf="data.event != null">
@@ -55,22 +53,30 @@
                 <mat-tab label="Likes">
                      <ul class="collection" style="min-height: 400px;">
                          <li class="collection-item avatar" *ngFor="let like of data.likes" style="position: relative;">
-                             <img [src]="like.profile.photo == null?
+                         <div>
+                             <img [src]="like.profile == null || like.profile.photo == null?
                               '../../../../assets/no_avatar.jpg' :
                                like.profile.photo" class="circle" style="margin-top: 5px;">
-                             <div>{{like.profile.nickname}}</div>
-                             <span class="title">{{like.profile.name}}</span>
-                             <span class="title">{{like.profile.surname}}</span>
+                             <div>{{like.profile == null ? 'User nickname' : like.profile.nickname}}</div>
+                             <span class="title">{{like.profile == null ? 'User name' : like.profile.name}}</span>
+                             <span class="title">{{like.profile == null ? 'User surname' : like.profile.surname}}</span>
                              <button mat-raised-button color="accent" style="position: absolute;right: 10px;top: 17px;">
                              Add</button>
+                         </div>
                         </li>
+                        <div *ngIf="pagination.likes.total >= 15">
+                            <button *ngIf="pagination.likes.last_page !== pagination.likes.current_page"
+                              (click)="getMore('likes')" >
+                             more...
+                             </button>
+                        </div>
                      </ul>
                 </mat-tab>
                 <mat-tab label="Comment">
                 <div style="min-height: 400px;">
                     <ul class="collection" style="min-height: 400px;">
                           <li class="collection-item avatar" *ngFor="let comment of data.comments" style="position: relative;">
-                              <img [src]="comment.profile.photo == null?
+                              <img [src]=" comment.profile == null|| comment.profile.photo == null?
                                '../../../../assets/no_avatar.jpg' :
                                 comment.profile.photo" class="circle" style="margin-top: 5px;">
                               <div style="word-break: break-all;">
@@ -93,6 +99,12 @@
                                   {{time_ago(comment.created_at)}}
                              </span>
                          </li>
+                         <div *ngIf="pagination.comments.total >= 15">
+                             <button *ngIf="pagination.comments.last_page !== pagination.comments.current_page"
+                                  (click)="getMore('comments')" >
+                                   more...
+                             </button>
+                         </div>
                     </ul>
                 </div>
                 </mat-tab>

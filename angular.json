@@ -32,7 +32,8 @@
 //              "node_modules/materialize-css/dist/css/materialize.css"
             ],
             "scripts": [
-              "node_modules/materialize-css/dist/js/materialize.js"
+              "node_modules/materialize-css/dist/js/materialize.js",
+              "node_modules/laravel-echo/dist/echo.js"
             ]
           },
           "configurations": {
@@ -91,7 +92,8 @@
               "node_modules/bootstrap/dist/css/bootstrap.css"
             ],
             "scripts": [
-//              "node_modules/materialize-css/dist/js/materialize.js"
+              "node_modules/materialize-css/dist/js/materialize.js",
+              "node_modules/laravel-echo/dist/echo.js"
             ],
             "assets": [
               "src/favicon.ico",

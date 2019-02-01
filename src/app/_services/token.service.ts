@@ -1,6 +1,7 @@
 const tokenKey = 'auth_token';
 const idKey = 'auth_id';
 
+
 export class TokenService {
     static getToken(): string {
         return window.localStorage[tokenKey];
